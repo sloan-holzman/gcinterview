@@ -14,4 +14,5 @@ Campaign.destroy_all
 harvard = Campaign.create(school: "Harvard", amount: 500)
 
 harvard.donations.create({amount: 500, date: Date.today, name: 'Anonymous', email: 'fake@fake.com'})
-harvard.matching_rules.create({ratio: 1, start_date: (Date.today-1), end_date: (Date.today+300), cap: 50000})
+harvard.matching_rules.create({ratio: 1, start_date: (Date.today-1), end_date: (Date.today+300), cap: 50000, type_match: 'fixed', fixed_per_donation: 500})
+harvard.matching_rules.create({ratio: 1, start_date: (Date.today-1), end_date: (Date.today+300), cap: 50000, type_match: 'ratio', fixed_per_donation: 500})

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180301191449) do
+ActiveRecord::Schema.define(version: 20180301193450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 20180301191449) do
     t.string "donor", default: "Anonymous"
     t.integer "cap"
     t.integer "total", default: 0
+    t.string "type_match"
+    t.integer "fixed_per_donation"
     t.index ["campaign_id"], name: "index_matching_rules_on_campaign_id"
   end
 

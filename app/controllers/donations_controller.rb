@@ -11,7 +11,11 @@ class DonationsController < ApplicationController
     matching_rules = @campaign.matching_rules.where("start_date <= ? and end_date >= ?", @donation.date, @donation.date)
     new_amount = @campaign.amount+@donation.amount
     matching_rules.each do |rule|
-      match_amount = [rule.cap - rule.total, @donation.amount*rule.ratio].min
+      if rule.type_match == 'ratio'
+        match_amount = [rule.cap - rule.total, @donation.amount*rule.ratio].min
+      else
+        match_amount = [rule.cap - rule.total, rule.fixed_per_donation].min        
+      end
       new_total = rule.total+match_amount
       rule.update(total: new_total)
       new_amount += match_amount
