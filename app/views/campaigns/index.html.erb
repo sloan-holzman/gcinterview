@@ -1,0 +1,6 @@
+<h1>Campaigns</h1>
+<ul>
+  <% for campaign in @campaigns %>
+  <li><%= link_to campaign.school, campaign_path(campaign) %></li>
+  <% end %>
+</ul>

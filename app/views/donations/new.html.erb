@@ -1,0 +1,22 @@
+<h2>New Donation</h2>
+
+<%= form_for [@campaign,@donation] do |f|  %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <%= f.label :amount %>
+  <%= f.number_field :amount %>
+
+  <%= f.label :date %>
+  <%= f.date_field :date, :value => Date.today.strftime('%Y-%m-%d') %>
+
+  <%= f.submit "Make donation" %>
+
+<% end %>
+
+<h4><%= link_to "Back to campaign", campaign_path(@campaign) %></h4>
+
+t.datetime "date"

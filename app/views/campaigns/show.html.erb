@@ -1,0 +1,27 @@
+<h1><%= @campaign.school %></h1>
+<h2>Amount raised: $<%= @campaign.amount %></h2>
+
+<% if @matching_rules.length > 0 %>
+  <h3>Matching donations</h3>
+  <ul>
+    <% for rule in @matching_rules %>
+      <li>Donor: <%= rule.donor %>, Cap: <%= rule.cap %>, Total donated: <%= rule.total %>, Ratio: <%= rule.ratio %>, Start Date: <%= rule.start_date %>, End Date: <%= rule.end_date %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are currently no matching donations.</p>
+<% end %>
+<% if @donations.length > 0 %>
+  <h3>Donations</h3>
+  <ul>
+    <% for donation in @donations %>
+      <li>Donor: <%= donation.name %>, amount: <%= donation.amount %>, date: <%= donation.date %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>This campaign just started.  Be the first to donate!</p>
+<% end %>
+
+<p><%= link_to "Make donation", new_campaign_donation_path(@campaign) %></p>
+
+<p>If you are interested in matching funds, contact us at 555-555-5555 or fakeemail@givecampus.com</p>
