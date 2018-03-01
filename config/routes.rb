@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :campaigns, only: [:show, :index] do
     resources :donations, only: [:new, :create]
+    resources :matching_rules, only: [:new, :create]
   end
 
 

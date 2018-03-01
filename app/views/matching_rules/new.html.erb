@@ -1,0 +1,30 @@
+<h2>New Matching Rule</h2>
+
+<%= form_for [@campaign,@matching_rule] do |f|  %>
+  <%= f.label :donor %>
+  <%= f.text_field :donor %>
+
+  <%= f.label :cap %>
+  <%= f.number_field :cap %>
+
+  <%= f.label :start_date %>
+  <%= f.date_field :start_date, :value => Date.today.strftime('%Y-%m-%d') %>
+
+  <%= f.label :start_date %>
+  <%= f.date_field :start_date, :value => Date.today.strftime('%Y-%m-%d') %>
+
+  <%= f.label :type_match %>
+  <%=  f.select :type_match, ['ratio', 'fixed']%>
+
+  <%= f.label :ratio %>
+  <%= f.number_field :ratio, :step => 0.1 %>
+
+  <%= f.label :fixed_per_donation %>
+  <%= f.number_field :fixed_per_donation %>
+
+
+  <%= f.submit "Submit matching campaign" %>
+
+<% end %>
+
+<h4><%= link_to "Back to campaign", campaign_path(@campaign) %></h4>
